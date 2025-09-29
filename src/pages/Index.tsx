@@ -1,6 +1,6 @@
 import FunctionCard from "@/components/FunctionCard";
 import { Search, Building2, TrendingUp, Shield, DollarSign, Users, Cpu, Scale, FileSearch } from "lucide-react";
-import gosiLogo from "@/assets/gosi-logo.png";
+import gosiLogo from "@/assets/gosi-logo.svg";
 
 const Index = () => {
   const departments = [
@@ -138,7 +138,9 @@ const Index = () => {
       <header className="border-b border-border bg-card sticky top-0 z-50 backdrop-blur-sm bg-card/95">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={gosiLogo} alt="GOSI Logo" className="h-12 w-auto" />
+            <div className="bg-white dark:bg-white px-3 py-2 rounded-lg">
+              <img src={gosiLogo} alt="GOSI Logo" className="h-10 w-auto" />
+            </div>
             <div>
               <h1 className="text-xl font-bold text-foreground">GOSI AI Assistant</h1>
               <p className="text-xs text-muted-foreground">Department-Wise Prompt Libraries</p>
