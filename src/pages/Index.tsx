@@ -167,15 +167,16 @@ const Index = () => {
               <p className="text-xs text-muted-foreground">Department-Wise Prompt Libraries</p>
             </div>
           </div>
-          <a 
-            href="https://llm-platform.gosi.ins/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-          >
-            <Search className="h-4 w-4" />
-            <span className="text-sm font-medium">Open Platform</span>
-          </a>
+          <div className="relative max-w-md w-full">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search prompts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+          </div>
         </div>
       </header>
 
