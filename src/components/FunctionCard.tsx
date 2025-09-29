@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface FunctionCardProps {
   title: string;
@@ -11,6 +12,8 @@ interface FunctionCardProps {
 }
 
 const FunctionCard = ({ title, description, prompt, gradient, tags = [] }: FunctionCardProps) => {
+  const { t } = useTranslation();
+  
   const handleClick = () => {
     const encodedPrompt = encodeURIComponent(prompt);
     window.open(`https://llm-platform.gosi.ins/?q=${encodedPrompt}`, '_blank');
@@ -54,8 +57,8 @@ const FunctionCard = ({ title, description, prompt, gradient, tags = [] }: Funct
         </p>
         
         <div className="flex items-center text-primary font-medium group-hover:text-accent transition-colors pt-2">
-          <span className="text-sm">Try this prompt</span>
-          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          <span className="text-sm">{t('prompts.tryPrompt')}</span>
+          <ArrowRight className="ltr:ml-2 rtl:mr-2 h-4 w-4 group-hover:ltr:translate-x-1 group-hover:rtl:-translate-x-1 transition-transform" />
         </div>
       </div>
     </Card>
