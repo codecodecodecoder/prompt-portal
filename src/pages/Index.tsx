@@ -1,8 +1,11 @@
 import FunctionCard from "@/components/FunctionCard";
 import { Search, Building2, TrendingUp, Shield, DollarSign, Users, Cpu, Scale, FileSearch } from "lucide-react";
 import gosiLogo from "@/assets/gosi-logo.png";
+import { useState, useMemo } from "react";
+import { Input } from "@/components/ui/input";
 
 const Index = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   const departments = [
     {
       name: "Strategy & Transformation",
@@ -132,6 +135,23 @@ const Index = () => {
     },
   ];
 
+  const filteredDepartments = useMemo(() => {
+    if (!searchQuery.trim()) return departments;
+    
+    const query = searchQuery.toLowerCase();
+    return departments
+      .map(dept => ({
+        ...dept,
+        prompts: dept.prompts.filter(prompt =>
+          prompt.title.toLowerCase().includes(query) ||
+          prompt.category.toLowerCase().includes(query) ||
+          prompt.prompt.toLowerCase().includes(query) ||
+          dept.name.toLowerCase().includes(query)
+        )
+      }))
+      .filter(dept => dept.prompts.length > 0);
+  }, [searchQuery, departments]);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -146,15 +166,16 @@ const Index = () => {
               <p className="text-xs text-muted-foreground">Department-Wise Prompt Libraries</p>
             </div>
           </div>
-          <a 
-            href="https://llm-platform.gosi.ins/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-          >
-            <Search className="h-4 w-4" />
-            <span className="text-sm font-medium">Open Platform</span>
-          </a>
+          <div className="relative max-w-md w-full">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              type="text"
+              placeholder="Search prompts..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10"
+            />
+          </div>
         </div>
       </header>
 
@@ -175,7 +196,12 @@ const Index = () => {
       {/* Departments */}
       <section className="container mx-auto px-4 py-12">
         <div className="space-y-16">
-          {departments.map((dept, deptIndex) => {
+          {filteredDepartments.length === 0 ? (
+            <div className="text-center py-16">
+              <p className="text-muted-foreground text-lg">No prompts found matching "{searchQuery}"</p>
+            </div>
+          ) : (
+            filteredDepartments.map((dept, deptIndex) => {
             const Icon = dept.icon;
             const gradients = ["gradient-1", "gradient-2", "gradient-3"] as const;
             
@@ -202,7 +228,7 @@ const Index = () => {
                 </div>
               </div>
             );
-          })}
+          }))}
         </div>
       </section>
 
