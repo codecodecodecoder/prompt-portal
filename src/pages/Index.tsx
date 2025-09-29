@@ -1,6 +1,6 @@
 import FunctionCard from "@/components/FunctionCard";
 import { Search, Building2, TrendingUp, Shield, DollarSign, Users, Cpu, Scale, FileSearch } from "lucide-react";
-import gosiLogo from "@/assets/gosi-logo.svg";
+import gosiLogo from "@/assets/gosi-logo.png";
 
 const Index = () => {
   const departments = [
