@@ -1,12 +1,12 @@
 {
   "header": {
-    "title": "GOSI AI Assistant",
+    "title": "AI Assistant",
     "subtitle": "Department-Wise Prompt Libraries",
     "searchPlaceholder": "Search prompts..."
   },
   "hero": {
     "title": "📚 Department-Wise Prompt Libraries",
-    "description": "Explore AI-powered prompts organized by GOSI departments. Click any card to execute the prompt instantly."
+    "description": "Explore AI-powered prompts organized by departments. Click any card to execute the prompt instantly."
   },
   "departments": {
     "strategy": "Strategy & Transformation",
@@ -23,7 +23,7 @@
     "noResults": "No prompts found matching"
   },
   "footer": {
-    "copyright": "© 2025 GOSI. All rights reserved. Powered by GOSI LLM Platform."
+    "copyright": "© 2025 AI Assistant. All rights reserved."
   },
   "categories": {
     "strategicPlanning": "Strategic Planning",

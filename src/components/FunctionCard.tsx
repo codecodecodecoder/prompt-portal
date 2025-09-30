@@ -16,7 +16,7 @@ const FunctionCard = ({ title, description, prompt, gradient, tags = [] }: Funct
   
   const handleClick = () => {
     const encodedPrompt = encodeURIComponent(prompt);
-    window.open(`https://llm-platform.gosi.ins/?q=${encodedPrompt}`, '_blank');
+    window.open(`https://llm-platform.example.com/?q=${encodedPrompt}`, '_blank');
   };
 
   const gradientClasses = {
