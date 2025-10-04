@@ -15,7 +15,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/prompt-portal">
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<NotFound />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
